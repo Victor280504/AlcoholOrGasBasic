@@ -1,0 +1,36 @@
+# Gradle files
+.gradle/
+build/
+/*/build/
+
+# Kotlin
+.kotlin/
+
+# IDE and Project files
+*.iml
+.idea/
+local.properties
+.externalNativeBuild
+.cxx/
+captures/
+*.hprof
+
+# Signing files
+*.jks
+*.keystore
+*.pk8
+*.pem
+google-services.json
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Backup and temporary files
+*.bak
+*.swp
+*~

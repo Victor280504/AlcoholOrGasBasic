@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Álcool ou Gasolina</string>
+    <string name="alcohol_price">Preço do Álcool (R$)</string>
+    <string name="gasoline_price">Preço da Gasolina (R$)</string>
+    <string name="station_name">Posto de Gasolina</string>
+    <string name="station_placeholder">Nome do Posto (Opcional)</string>
+    <string name="calculate">Calcular</string>
+    <string name="lets_calculate">Vamos Calcular?</string>
+    <string name="buy_alcohol">Compre Álcool!</string>
+    <string name="buy_gasoline">Compre Gasolina!</string>
+    <string name="alcohol_or_gasoline">Álcool ou Gasolina?</string>
+    <string name="discover_the_best">Descubra qual combustível é melhor para seu carro!</string>
+    <string name="lets_start">Vamos Começar!</string>
+    <string name="welcome_image">Imagem de boas-vindas</string>
+    <string name="insert_station">Inserir Posto</string>
+    <string name="add">Adicionar</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="edit_title">Editar - %1$s</string>
+    <string name="not_identified">Não Identificado</string>
+    <string name="update_coordinates">Atualizar Coordenadas</string>
+    <string name="no_stations_found">Nenhuma estação registrada.</string>
+    <string name="list_of_gas_stations">Lista de Postos de Gasolina</string>
+    <string name="view_on_map">Vizualizar no mapa</string>
+    <string name="delete_station">Deletar Posto de Gasolina</string>
+    <string name="details">Detalhes</string>
+    <string name="station_saved">Posto de Gasolina Registrado</string>
+    <string name="allow">Permitir</string>
+    <string name="failed_to_obtain_location">Não foi possível obter localização</string>
+    <string name="location_pernission_message">Sua localização é necessária para encontrar serviços próximos a você.</string>
+    <string name="location_permission">Permissão de Localização</string>
+    <string name="map_not_found">Aplicativo Google Maps não encontrado.</string>
+    <string name="open_settings">Abrir Configurações</string>
+    <string name="location_permission_denied_permanently">A permissão de localização foi negada permanentemente. Por favor, habilite-a nas configurações para salvar sua localização.</string>
+    <string name="percent_70">70%</string>
+    <string name="percent_75">75%</string>
+    <string name="delete_station_message">Você tem certeza que deseja excluir permanentemente esse registro?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="back">Voltar</string>
+</resources>

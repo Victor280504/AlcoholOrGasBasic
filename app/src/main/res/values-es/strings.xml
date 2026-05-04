@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alcohol o Gasolina</string>
+    <string name="alcohol_price">Precio del Alcohol (R$)</string>
+    <string name="gasoline_price">Precio de la Gasolina (R$)</string>
+    <string name="station_name">Gasolinera</string>
+    <string name="station_placeholder">Nombre de la Gasolinera (Opcional)</string>
+    <string name="calculate">Calcular</string>
+    <string name="lets_calculate">¿Vamos a Calcular?</string>
+    <string name="buy_alcohol">¡Compra Alcohol!</string>
+    <string name="buy_gasoline">¡Compra Gasolina!</string>
+    <string name="alcohol_or_gasoline">¿Alcohol o Gasolina?</string>
+    <string name="discover_the_best">¡Descubre qué combustible es mejor para tu coche!</string>
+    <string name="lets_start">¡Empecemos!</string>
+    <string name="welcome_image">Imagen de bienvenida</string>
+    <string name="insert_station">Ingresar Gasolinera</string>
+    <string name="add">Agregar</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="edit_title">Editar - %1$s</string>
+    <string name="not_identified">No identificado</string>
+    <string name="update_coordinates">Actualizar coordenadas</string>
+    <string name="no_stations_found">No hay estaciones registradas aún.</string>
+    <string name="list_of_gas_stations">Lista de estaciones de servicio</string>
+    <string name="view_on_map">Ver en el mapa</string>
+    <string name="delete_station">Eliminar estación</string>
+    <string name="details">Detalles</string>
+    <string name="station_saved">Estación guardada</string>
+    <string name="allow">Permitir</string>
+    <string name="failed_to_obtain_location">No fue posible obtener ubicación</string>
+    <string name="location_permission">Permiso de Ubicación</string>
+    <string name="location_pernission_message">Su ubicación es necesaria para encontrar servicios cerca de usted.</string>
+    <string name="map_not_found">Aplicación Google Maps no encontrada.</string>
+    <string name="open_settings">Abrir Configuración</string>
+    <string name="location_permission_denied_permanently">El permiso de ubicación ha sido negado permanentemente. Por favor, habilítelo en la configuración para guardar su ubicación.</string>
+    <string name="percent_70">70%</string>
+    <string name="percent_75">75%</string>
+    <string name="yes">Sí</string>
+    <string name="delete_station_message">¿Está seguro de que desea eliminar permanentemente este registro?</string>
+    <string name="no">No</string>
+    <string name="back">Volver</string>
+</resources>
