@@ -31,7 +31,7 @@ private val LightColorScheme = lightColorScheme(
 
 private val DarkColorScheme = darkColorScheme(
     primary = DarkPrimary,
-    onPrimary = DarkTextPrimary,
+    onPrimary = TextPrimary,
 
     secondary = DarkBlueSecondary,
     onSecondary = DarkTextPrimary,
