@@ -30,6 +30,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.alcoholorgas.R
@@ -106,9 +108,14 @@ fun HomeScreen(
             }
         }
     }
+    val homeScreenDescription = stringResource(R.string.home_screen)
 
     Scaffold(
+        modifier = Modifier.semantics {
+            contentDescription = homeScreenDescription
+        },
         containerColor = Color.Transparent,
+        topBar = {},
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -119,7 +126,7 @@ fun HomeScreen(
             ) {
                 Icon(
                     Icons.Filled.History,
-                    contentDescription = stringResource(R.string.insert_station),
+                    contentDescription = stringResource(R.string.list_of_gas_stations),
                 )
             }
         }
