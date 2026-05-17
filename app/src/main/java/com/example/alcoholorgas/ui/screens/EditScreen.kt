@@ -56,6 +56,9 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import java.text.DateFormat
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -120,16 +123,24 @@ fun EditScreen(
             }
         }
     }
+    val listScreenDescription = stringResource(R.string.list_of_gas_stations)
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(topBarTitle) },
+                title = {
+                    Text(
+                        topBarTitle, modifier = Modifier.semantics { heading() },
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
+                            contentDescription = stringResource(
+                                R.string.back,
+                                listScreenDescription
+                            )
                         )
                     }
                 },

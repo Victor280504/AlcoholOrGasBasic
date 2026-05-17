@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -20,9 +21,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import com.example.alcoholorgas.R
 
 private val decimalRegex = Regex("^\\d*\\.?\\d*$")
@@ -49,7 +56,8 @@ fun PrimaryButton(
         Text(
             text = text,
             style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.onPrimary
+            color = if (isEnabled) MaterialTheme.colorScheme.onPrimary
+            else MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }
@@ -60,7 +68,7 @@ fun ActionButton(
     text: String,
     isEnabled: Boolean = true,
     color: Color = MaterialTheme.colorScheme.primary,
-    icon: androidx.compose.ui.graphics.vector.ImageVector? = null
+    icon: ImageVector? = null
 ) {
     Spacer(modifier = Modifier.height(20.dp))
     Button(
@@ -154,24 +162,47 @@ fun PercentageSwitch(
     checked: Boolean,
     onChange: (Boolean) -> Unit
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-
+    val is75Text = stringResource(R.string.percent_75)
+    val is70Text = stringResource(R.string.percent_70)
+    val ratioDescription = stringResource(R.string.fuel_efficiency_rate)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .toggleable(
+                value = checked,
+                onValueChange = { onChange(it) },
+                role = Role.Switch
+            )
+            .semantics(
+                mergeDescendants = true,
+            ) {
+                contentDescription = ratioDescription
+                stateDescription =
+                    if (checked) is75Text
+                    else is70Text
+            }
+            .padding(16.dp)
+    )
+    {
         Text(
-            stringResource(R.string.percent_70),
+            modifier = Modifier.clearAndSetSemantics { },
+            text = is70Text,
+            style = MaterialTheme.typography.labelLarge,
             color = if (!checked) MaterialTheme.colorScheme.onSurface
-            else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+            else MaterialTheme.colorScheme.onSurfaceVariant
         )
-
         Spacer(Modifier.width(16.dp))
-
-        Switch(checked = checked, onCheckedChange = onChange)
-
+        Switch(
+            modifier = Modifier.clearAndSetSemantics { },
+            checked = checked, onCheckedChange = null
+        )
         Spacer(Modifier.width(16.dp))
-
         Text(
-            stringResource(R.string.percent_75),
+            modifier = Modifier.clearAndSetSemantics { },
+            text = is75Text,
+            style = MaterialTheme.typography.labelLarge,
             color = if (checked) MaterialTheme.colorScheme.onSurface
-            else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+            else MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }

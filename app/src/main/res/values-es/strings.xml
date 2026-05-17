@@ -22,7 +22,7 @@
     <string name="update_coordinates">Actualizar coordenadas</string>
     <string name="no_stations_found">No hay estaciones registradas aún.</string>
     <string name="list_of_gas_stations">Lista de estaciones de servicio</string>
-    <string name="view_on_map">Ver en el mapa</string>
+    <string name="view_on_map">Ver %1$s en el mapa</string>
     <string name="delete_station">Eliminar estación</string>
     <string name="details">Detalles</string>
     <string name="station_saved">Estación guardada</string>
@@ -38,5 +38,8 @@
     <string name="yes">Sí</string>
     <string name="delete_station_message">¿Está seguro de que desea eliminar permanentemente este registro?</string>
     <string name="no">No</string>
-    <string name="back">Volver</string>
+    <string name="back">Volver a la %1$s</string>
+    <string name="edit_station">Editar %1$s</string>
+    <string name="fuel_efficiency_rate">Tasa de eficiencia de combustible</string>
+    <string name="home_screen">Pantalla de inicio</string>
 </resources>

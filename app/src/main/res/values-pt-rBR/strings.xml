@@ -22,7 +22,7 @@
     <string name="update_coordinates">Atualizar Coordenadas</string>
     <string name="no_stations_found">Nenhuma estação registrada.</string>
     <string name="list_of_gas_stations">Lista de Postos de Gasolina</string>
-    <string name="view_on_map">Vizualizar no mapa</string>
+    <string name="view_on_map">Ver %1$s no mapa</string>
     <string name="delete_station">Deletar Posto de Gasolina</string>
     <string name="details">Detalhes</string>
     <string name="station_saved">Posto de Gasolina Registrado</string>
@@ -38,5 +38,8 @@
     <string name="delete_station_message">Você tem certeza que deseja excluir permanentemente esse registro?</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
-    <string name="back">Voltar</string>
+    <string name="back">Voltar para a %1$s</string>
+    <string name="edit_station">Editar %1$s</string>
+    <string name="fuel_efficiency_rate">Taxa de eficiencia de combustivel</string>
+    <string name="home_screen">Tela inicial</string>
 </resources>
