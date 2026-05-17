@@ -22,7 +22,7 @@
     <string name="update_coordinates">Update Coordinates</string>
     <string name="no_stations_found">No stations registered yet.</string>
     <string name="list_of_gas_stations">List of Gas Stations</string>
-    <string name="view_on_map">View on Map</string>
+    <string name="view_on_map">See %1$s on the map</string>
     <string name="delete_station">Delete Station</string>
     <string name="details">Details</string>
     <string name="station_saved">Station Saved</string>
@@ -38,5 +38,8 @@
     <string name="yes">Yes</string>
     <string name="delete_station_message">Are you sure you want to permanently delete this record?</string>
     <string name="no">No</string>
-    <string name="back">Go Back</string>
+    <string name="back">Go Back to %1$s</string>
+    <string name="edit_station">Edit %1$s</string>
+    <string name="fuel_efficiency_rate">Fuel efficiency rate</string>
+    <string name="home_screen">Home Screen</string>
 </resources>

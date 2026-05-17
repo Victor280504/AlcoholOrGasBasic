@@ -1,5 +1,6 @@
 package com.example.alcoholorgas.ui.screens
 
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
@@ -34,6 +35,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -44,6 +51,7 @@ import com.example.alcoholorgas.data.ApplicationSettings
 import com.example.alcoholorgas.util.calculateIsAlcoholBetter
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.alcoholorgas.data.model.GasStation
 import com.example.alcoholorgas.ui.viewmodels.StationsViewModel
 import java.text.DateFormat
 
@@ -67,8 +75,6 @@ fun StationsScreen(
         )
     }
 
-    val mapNotFoundMessage = stringResource(R.string.map_not_found)
-
     LaunchedEffect(Unit) {
         viewModel.loadStations()
     }
@@ -77,15 +83,25 @@ fun StationsScreen(
         navController.popBackStack("home", false)
     }
 
+    val homeScreenDescription = stringResource(R.string.home_screen)
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.list_of_gas_stations)) },
+                title = {
+                    Text(
+                        stringResource(R.string.list_of_gas_stations),
+                        modifier = Modifier.semantics { heading() },
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back)
+                            contentDescription = stringResource(
+                                R.string.back,
+                                homeScreenDescription
+                            )
                         )
                     }
                 },
@@ -119,14 +135,30 @@ fun StationsScreen(
                             item.gasolinePrice,
                             is75Percent
                         )
-
+                        val editStationLabel = stringResource(R.string.edit_station, item.name)
+                        val viewOnMapLabel = stringResource(R.string.view_on_map, item.name)
                         Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp)
+                                .semantics {
+                                    onClick(
+                                        label = editStationLabel,
+                                        action = null
+                                    )
+                                    customActions = listOf(
+                                        CustomAccessibilityAction(
+                                            label = viewOnMapLabel,
+                                            action = {
+                                                openStationOnMap(context, item)
+                                                ; true
+                                            }
+                                        )
+                                    )
+                                },
                             onClick = {
                                 navController.navigate("stations/${item.uuid}")
                             },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 8.dp),
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             colors = CardDefaults.cardColors(
                                 containerColor = MaterialTheme.colorScheme.surface,
@@ -152,11 +184,13 @@ fun StationsScreen(
                                     )
                                     Text(
                                         text = "${stringResource(R.string.alcohol_price)}: R$ ${item.alcoholPrice}",
-                                        style = MaterialTheme.typography.bodyMedium
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     )
                                     Text(
                                         text = "${stringResource(R.string.gasoline_price)}: R$ ${item.gasolinePrice}",
-                                        style = MaterialTheme.typography.bodyMedium
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
 
                                     val resultText = when (isAlcoholBetter) {
@@ -189,27 +223,14 @@ fun StationsScreen(
                                 }
 
                                 Row {
-                                    IconButton(onClick = {
-                                        val gmmIntentUri =
-                                            "geo:${item.coord.lat},${item.coord.lgt}".toUri()
-                                        val mapIntent =
-                                            Intent(Intent.ACTION_VIEW, gmmIntentUri).apply {
-                                                setPackage("com.google.android.apps.maps")
-                                            }
-                                        try {
-                                            context.startActivity(mapIntent)
-                                        } catch (e: Exception) {
-                                            Log.e("LOC", e.toString())
-                                            Toast.makeText(
-                                                context,
-                                                mapNotFoundMessage,
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                        }
-                                    }) {
+                                    IconButton(
+                                        modifier = Modifier.clearAndSetSemantics { },
+                                        onClick = {
+                                            openStationOnMap(context, item)
+                                        }) {
                                         Icon(
                                             imageVector = Icons.Default.FmdGood,
-                                            contentDescription = stringResource(R.string.view_on_map),
+                                            contentDescription = viewOnMapLabel,
                                             tint = MaterialTheme.colorScheme.primary
                                         )
                                     }
@@ -220,5 +241,25 @@ fun StationsScreen(
                 }
             }
         }
+    }
+}
+
+
+fun openStationOnMap(context: Context, station: GasStation) {
+    val gmmIntentUri =
+        "geo:${station.coord.lat},${station.coord.lgt}".toUri()
+    val mapIntent =
+        Intent(Intent.ACTION_VIEW, gmmIntentUri).apply {
+            setPackage("com.google.android.apps.maps")
+        }
+    try {
+        context.startActivity(mapIntent)
+    } catch (e: Exception) {
+        Log.e("LOC", e.toString())
+        Toast.makeText(
+            context,
+            context.getString(R.string.map_not_found),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

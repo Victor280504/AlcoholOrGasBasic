@@ -9,14 +9,12 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.example.alcoholorgas.ui.theme.PinkAccent
-
 
 private val LightColorScheme = lightColorScheme(
-    primary = TealPrimary,
+    primary = LightTealPrimary,
     onPrimary = SurfaceLight,
 
-    secondary = BlueSecondary,
+    secondary = LightBlueSecondary,
     onSecondary = SurfaceLight,
 
     background = BackgroundLight,
@@ -24,6 +22,7 @@ private val LightColorScheme = lightColorScheme(
 
     surface = SurfaceLight,
     onSurface = TextPrimary,
+    onSurfaceVariant = LightTextSecondary,
 
     tertiary = OrangeAccent,
     primaryContainer = Color.White,
@@ -34,7 +33,7 @@ private val DarkColorScheme = darkColorScheme(
     primary = DarkPrimary,
     onPrimary = DarkTextPrimary,
 
-    secondary = BlueSecondary,
+    secondary = DarkBlueSecondary,
     onSecondary = DarkTextPrimary,
 
     background = DarkBackground,
@@ -42,6 +41,7 @@ private val DarkColorScheme = darkColorScheme(
 
     surface = DarkSurface,
     onSurface = DarkTextPrimary,
+    onSurfaceVariant = DarkTextSecondary,
 
     tertiary = OrangeAccent,
     primaryContainer = Color.Black,
